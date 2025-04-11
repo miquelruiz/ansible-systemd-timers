@@ -1,6 +1,7 @@
 ---
-- block:
-
+- name: Create timer and service units
+  when: timers is defined
+  block:
     - name: Failing when timer_command is undefined
       fail:
           msg: Varible timer_command is not defined
@@ -37,4 +38,3 @@
           scope: "{{ systemd_scope | default('system') }}"
       with_dict: "{{ timers }}"
 
-  when: timers is defined
