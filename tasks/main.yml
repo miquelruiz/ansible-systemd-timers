@@ -30,10 +30,9 @@
     - name: Enabling timers
       systemd:
           name: "{{ item.key }}.timer"
-          state: restarted
+          state: started
           enabled: true
           masked: false
-          daemon_reload: true
           scope: "{{ systemd_scope | default('system') }}"
       with_dict: "{{ timers }}"
 
